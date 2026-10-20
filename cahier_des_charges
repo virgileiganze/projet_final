@@ -1,0 +1,58 @@
+Cahier des charges : outil de suivi des demandes GIVR
+
+1. Contexte
+Sodiaal est une coopérative laitière française. Son ERP métier GIVR compte environ 487 utilisateurs. L'équipe GIVR Assistance assure le support fonctionnel, et j'y interviens dans le cadre de mon en alternance.
+Toutes les demandes arrivent dans une boîte mail partagée, par deux canaux :
+
+Icône enveloppe (dans GIVR)	Objet prérempli, identifiant utilisateur, modifications demandées
+Mail libre	Texte libre (question, demande d'information)
+
+Volume estimé : plus de 50 messages par jour ouvré.
+
+2. Problèmes constatés
+P1	Aucune demande n'a initialment de propriétaire
+P2	Aucune priorisation : un blocage en production attend comme une question de confort
+P3	Aucune mesure des délais ni des volumes
+P4	Les mails libres arrivent sans structure
+
+3. Problématique
+Comment fiabiliser le traitement des demandes adressées à l'assistance GIVR, sans modifier l'ERP ni les habitudes des utilisateurs ?
+
+4. Positionnement
+Le livrable est un prototype fonctionnel, déployé sur une infrastructure de maquette, avec des données fictives. Il sert à modéliser le processus cible et à valider les règles de qualification.
+Des outils du marché existent (GLPI, Jira Service Management). Le développement répond à deux raisons : le programme impose de concevoir une application (modélisation, API, authentification), et le besoin comporte une part spécifique (reconnaître le format des mails émis par GIVR). 
+
+5. Objectifs
+O1	Chaque demande a un propriétaire et un statut explicite	100 % des tickets ouverts affectés ou en file de tri
+O2	Priorisation homogène	Priorité calculée par la matrice impact x urgence
+O3	Délais mesurables	Première réponse et résolution disponibles par période
+O4	Récurrences visibles	Répartition par catégorie, top 10 des motifs
+O5	Aucun changement d'habitude pour les utilisateurs	Mails de l'icône convertis en tickets sans action de leur part
+
+
+6. Besoins fonctionnels (MoSCoW)
+
+M : indispensable au prototype
+BF1	S'authentifier, accéder uniquement aux fonctions de son rôle
+BF2	Créer une demande (objet, description, catégorie, urgence)
+BF3	Consulter ses propres demandes
+BF4	Ajouter un suivi à une demande
+BF5	Consulter la file (non affectées, mes tickets, tous), filtrer par statut et catégorie
+BF6	Qualifier : type ITIL, catégorie, impact
+BF7	S'affecter ou affecter un ticket
+
+7. Contraintes
+Maquette sur PC portable Dell Latitude 5420 (x86, Windows 11, 16 Go de RAM). Le Mac M1 sert de poste de développement.
+Budget nul : logiciels libres, gratuits.
+Projet réalisé seul.
+
+  
+8. Méthode
+Kanban avec revue hebdomadaire et jalons fixes. 
+Outil : GitHub Projects (À faire, En cours, Bloqué, Fait)
+Maximum 2 tâches en cours
+Revue chaque dimanche
+« Fait » = testé, documenté et versionné
+
+9. Livrables
+Cahier des charges, architecture et schéma réseau, planning, maquettes Figma, modèle de données et scripts SQL, documentation de l'API, application versionnée, cahier de recette et PV, documentation de l'infrastructure
